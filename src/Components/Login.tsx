@@ -1,13 +1,16 @@
 import "./stylesheets/register.css";
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import AuthContext from "../context/AuthProvider";
 
  export default function Register(){
 
     //usecontext and auth
 
-    const {setAuth} = useContext<any>(AuthContext);
+    const {auth, setAuth} = useContext<any>(AuthContext);
+    useEffect(() => {
+        console.log(auth);
+      }, [auth]);
 
     //for form elements
     const [email, setEmail] = useState<string>('');
@@ -39,6 +42,7 @@ import AuthContext from "../context/AuthProvider";
                 //accestoken made availible globally by usecontext
                 const accessToken = response?.data?.token; //again, token property is sent by server so match that
                 setAuth({email, pwd, accessToken});
+    
         }catch(err : unknown){
             if(!(err as any)?.response){
                 //(err as any means bypassong type checking for that specific expression)
