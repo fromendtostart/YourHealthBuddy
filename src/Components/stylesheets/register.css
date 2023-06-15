@@ -1,0 +1,22 @@
+.register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border : solid 2px;
+    padding : 1rem;
+    /* when in percentages even height is calculated as percentage oof width */
+    margin-top: 50vh;
+    margin-left: 50vw;
+    margin-bottom: auto;
+    margin-right: auto;
+    transform: translate(-49%, -60%);
+    width: fit-content;
+}
+
+.register form{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+    gap: 1rem;
+}

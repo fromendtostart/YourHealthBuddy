@@ -1,0 +1,19 @@
+.navbar{
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    padding : 0 2rem 0 2rem;
+}
+
+.nav-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    gap:1rem;
+    height: fit-content;
+}
+
+.nav-buttons button{
+    font-size: 1rem;
+}
