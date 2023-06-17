@@ -19,7 +19,6 @@ interface workoutObj {
 export default function Planpopup(props : Popup){
 
     const {auth} = useContext<any>(AuthContext);
-    console.log(auth.accessToken);
     const [planName, setPlanName] = useState<string>("");
     const [workouts, setWorkouts] = useState<string>("");
 
@@ -28,7 +27,7 @@ export default function Planpopup(props : Popup){
 
         const workoutList : Array<string> = workouts.split(",");
         const numberedWorkoutList : Array<workoutObj> = workoutList.map((workout : string) => ({"workout" : workout, "number" : 0}))
-
+        console.log(`${auth.accessToken} is token`);
 
         const planData = {
             "plan" : {
@@ -50,7 +49,7 @@ export default function Planpopup(props : Popup){
             baseURL : "http://localhost:5000/data"
         })
 
-        const createplanURL = "/add";
+        const createplanURL = "/addPlan";
         try{
             const response = await axiosreq.post(createplanURL,
                     planData,
@@ -58,7 +57,6 @@ export default function Planpopup(props : Popup){
                         headers: {"Content-Type" : "application/json", "Authorization" : `Bearer ${auth.accessToken}`}
                     }
                 );
-                console.log(response);
         }catch(err : unknown){
             if(!(err as any)?.response){
                 alert("No response from server");

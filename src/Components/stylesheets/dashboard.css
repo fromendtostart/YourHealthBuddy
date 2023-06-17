@@ -1,4 +1,8 @@
+:root{
+    --clr-primary : rgb(43, 147, 226);
+}
+
 body {
     margin:0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }

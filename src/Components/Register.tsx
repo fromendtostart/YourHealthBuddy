@@ -33,8 +33,9 @@ import { useState, useEffect } from "react";
         event.preventDefault();
         if(pwd==='' || user ==='' || email==='')
         alert("Enter all fields")
+        let response;
         try{
-            const response = await axiosreq.post(regURL,
+            response = await axiosreq.post(regURL,
                     {name : user, email, password : pwd},//the property names should match ones expected by backend
                     {
                         headers: {"Content-Type" : "application/json"},

@@ -7,7 +7,7 @@ export default function Navbar(){
     const [trigger, setTrigger] = useState<boolean>(false);
     return(
         <div className="navbar">
-            <h2>YourHealthBuddy</h2>
+            <h1>YourHealthBuddy</h1>
             <div className="nav-buttons">
                 <button onClick={()=>setTrigger(true)}>Create plan</button>
                 <button>Logout</button>

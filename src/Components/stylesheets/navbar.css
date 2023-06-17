@@ -1,5 +1,5 @@
 .navbar{
-    background-color: blue;
+    background-color: var(--clr-primary);
     display: flex;
     justify-content: space-between;
     padding : 0 2rem 0 2rem;
@@ -16,4 +16,5 @@
 
 .nav-buttons button{
     font-size: 1rem;
+    padding: 0.5rem;
 }
