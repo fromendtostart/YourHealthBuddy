@@ -18,16 +18,16 @@ export default function Info(){
         baseURL : "http://localhost:5000/"
     })
 
-    const calculate = () => {
-        for(let i=0; i<rawResponse.length; i++)
-        {
-            for(let j=0; j<rawResponse[i].plan.data.today.length; j++)
-            {
-                setResponseData((responseData)=> [...responseData, {workout : rawResponse[i].plan.data.today[j].workout, 
-                                                    number : rawResponse[i].plan.data.today[j].number}]);
-            }
-        }
-    }
+    // const calculate = () => {
+    //     for(let i=0; i<rawResponse.length; i++)
+    //     {
+    //         for(let j=0; j<rawResponse[i].plan.data.today.length; j++)
+    //         {
+    //             setResponseData((responseData)=> [...responseData, {workout : rawResponse[i].plan.data.today[j].workout, 
+    //                                                 number : rawResponse[i].plan.data.today[j].number}]);
+    //         }
+    //     }
+    // }
 
     const {auth} = useContext<any>(AuthContext);
 
@@ -46,11 +46,21 @@ export default function Info(){
                     );
                     setRawResponse(response.data[0].plans);   
                     console.log(response);                
-                    calculate(); 
+
+                        // for(let i=0; i<rawResponse.length; i++)
+                        // {
+                            for(let j=0; j<rawResponse[0]?.plan?.data?.today?.length; j++)
+                            {
+                                setResponseData((responseData)=> [...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
+                                                                    number : rawResponse[0].plan.data.today[j].number}]);
+                            }
+                        // }
+                    
                     setCounter(1);
                     //can use useref instead of usestate as no re rendering shenanigans
             }catch(err){
                 alert("Some problem!")
+                console.log(err);
             }
             
         }

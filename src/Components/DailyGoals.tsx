@@ -1,7 +1,7 @@
 import Counter from "./Counter"
 import "./stylesheets/dailygoals.css"
 import axios from "axios"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface workoutObj {
     workout : string,
@@ -15,15 +15,19 @@ interface WorkoutProps {
 export default function DailyGoals(workoutProps : WorkoutProps) {
 
     //made this as state so value can change after counter is clicked
-    const [updatedProps, setUpdatedProps] = useState(workoutProps.workouts)
+    //const clonedArray = structuredClone(workoutProps.workouts)
+    // eslint-disable-next-line prefer-const
+    let [updatedProps, setUpdatedProps] = useState<Array<workoutObj>>(workoutProps.workouts)
 
-
+    useEffect(() => {
+        setUpdatedProps(workoutProps.workouts)
+        //no infinite re rendering as array which is prop is immutable?!
+      }, [workoutProps.workouts])
     //function to be passed to child, there are many children  "counters" so have to pass identifiers to them
     //so that I know whose value is changed. 
     //for future : can "this" keyword help in shotening the code? no need to check name identified this would know
-    //which object to update in array of objects means to whcih object this "counter" child belongs to?
+    //which object to update in array of objects means to whcih object this "counter" child belongs to??
     const handleCountChange = (workoutName : string, newCount : number) => {
-        
         let index :number ;
 
         for(let i=0; i<updatedProps.length; i++){
@@ -85,6 +89,7 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
         console.log(updatedProps);
     }
     return(
+        <>
         <div className="dailygoals">
             <span className="goalheading">Daily Goals</span>
             <div className="goalitems">
@@ -92,11 +97,12 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
                     <div className="goalitem">
                         {item.workout}
                         {/* name shouldn't be what prop object is named in parameter but what is within that prop, as we don't do "prop=" */}
-                        <Counter count= {item.number} workoutName={item.workout} updatedWorkout={updatedProps} onCountChange={handleCountChange}/>
+                        <Counter count= {item.number} workoutName={item.workout} onCountChange={handleCountChange}/>
                     </div>
                 ))}
             </div>
             <button className="submitbutton" onClick={handleSubmit}>Submit</button>
         </div>
+        </>
     )
 }

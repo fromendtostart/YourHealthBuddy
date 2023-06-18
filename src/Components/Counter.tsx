@@ -1,15 +1,8 @@
-import {useState} from "react";
 import "./stylesheets/counter.css"
-
-interface workoutObj {
-    workout : string,
-    number : number,
-}
 
 interface Countprops {
     count : number,
     workoutName : string,
-    updatedWorkout : Array<workoutObj>,
     onCountChange : (workoutName : string, newCount : number) => void
 }
 
@@ -23,7 +16,7 @@ export default function Counter(counter : Countprops){
     }
 
     const decrement = () => {
-        counter.onCountChange(counter.workoutName, counter.count-1);
+        counter.onCountChange(counter.workoutName, counter.count-1)
     }
 
     return(
