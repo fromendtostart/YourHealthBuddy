@@ -1,7 +1,8 @@
-import Counter from "./Counter"
-import "./stylesheets/dailygoals.css"
-import axios from "axios"
-import { useState, useEffect } from "react"
+import Counter from "./Counter";
+import "./stylesheets/dailygoals.css";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../context/AuthProvider";
 
 interface workoutObj {
     workout : string,
@@ -9,10 +10,14 @@ interface workoutObj {
 }
 
 interface WorkoutProps {
+    planName : string,
     workouts : Array<workoutObj>,
+    sum : Array<workoutObj>
 }
 
 export default function DailyGoals(workoutProps : WorkoutProps) {
+
+    const {auth} = useContext<any>(AuthContext);
 
     //made this as state so value can change after counter is clicked
     //const clonedArray = structuredClone(workoutProps.workouts)
@@ -53,9 +58,7 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
 
     const updateURL = "/update";
 
-    // const submitData = {
-    //     "plan" : 
-    // }
+    
 
     // {
     //     "plan" : {
@@ -73,20 +76,33 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
     //     }
     // }
 
-    // try{
-    //     response = await axiosreq.post(regURL,
-    //             {name : user, email, password : pwd},
-    //             {
-    //                 headers: {"Content-Type" : "application/json"},
-    //                 withCredentials: true,
-    //             }
-    //         );
-    // }catch(err : unknown){
-            
-    //     }
 
-    const handleSubmit = ()=>{
-        console.log(updatedProps);
+    const handleSubmit = async ()=>{
+        const submitData = {
+            "plan" : {
+                "name": workoutProps.planName,
+                "plan": {
+                    "dates" : {
+                        "start" : Date.now(),
+                        "current" : Date.now()
+                    },
+                    "data" : {
+                        "today" : updatedProps,
+                        "sum" : workoutProps.sum
+                    }
+                }
+            }
+        }
+        try{
+            const response = await axiosreq.put(updateURL,
+                    submitData,
+                    {
+                        headers: {"Content-Type" : "application/json", "Authorization" : `Bearer ${auth.accessToken}`},
+                    }
+                );
+        }catch(err : unknown){
+                console.log(err);
+            }
     }
     return(
         <>

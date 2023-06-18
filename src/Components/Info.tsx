@@ -13,6 +13,7 @@ export default function Info(){
 
     const [rawResponse, setRawResponse] = useState<any[]>([]);
     const [responseData, setResponseData] = useState<Array<workoutObj>>([]);
+    const [sumData, setSumData] = useState<Array<workoutObj>>([]);
     const [counter, setCounter] = useState(0);
     const axiosreq = axios.create({
         baseURL : "http://localhost:5000/"
@@ -53,6 +54,8 @@ export default function Info(){
                             {
                                 setResponseData((responseData)=> [...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
                                                                     number : rawResponse[0].plan.data.today[j].number}]);
+                                setSumData((sumData)=> [...sumData, {workout : rawResponse[0].plan.data.sum[j].workout, 
+                                                                     number : rawResponse[0].plan.data.sum[j].number+rawResponse[0].plan.data.today[j].number}]);
                             }
                         // }
                     
@@ -71,7 +74,7 @@ export default function Info(){
 
     return(
         <div className="info" id = "info">
-            {responseData && <DailyGoals workouts={responseData}/>}
+            {responseData && <DailyGoals workouts={responseData} planName={rawResponse[0]?.name} sum = {sumData} />}
             
         </div>
     )
