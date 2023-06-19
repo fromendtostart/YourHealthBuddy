@@ -50,16 +50,28 @@ export default function Info(){
 
                         // for(let i=0; i<rawResponse.length; i++)
                         // {
+                            const dateObj : Date = new Date();                            
                             for(let j=0; j<rawResponse[0]?.plan?.data?.today?.length; j++)
-                            {
-                                setResponseData((responseData)=> [...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
-                                                                    number : rawResponse[0].plan.data.today[j].number}]);
+                            {  
+                                setResponseData((responseData)=> {
+                                    if(dateObj.toISOString().substring(0,10)===rawResponse[0].plan.dates.current?.substring(0, 10))
+                                    {
+                                        return ([...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
+                                            number : rawResponse[0].plan.data.today[j].number}])
+                                    }
+                                    else
+                                    {
+                                        return([...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
+                                            number : 0}])
+                                    }
+                                });
                                 setSumData((sumData)=> [...sumData, {workout : rawResponse[0].plan.data.sum[j].workout, 
-                                                                     number : rawResponse[0].plan.data.sum[j].number+rawResponse[0].plan.data.today[j].number}]);
+                                                                     number : rawResponse[0].plan.data.sum[j].number}]);
                             }
                         // }
                     
                     setCounter(1);
+                    console.log(response);
                     //can use useref instead of usestate as no re rendering shenanigans
             }catch(err){
                 alert("Some problem!")

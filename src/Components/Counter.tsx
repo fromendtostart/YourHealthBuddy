@@ -21,9 +21,9 @@ export default function Counter(counter : Countprops){
 
     return(
         <div className="counter">
-            <button onClick={decrement}>-</button>
+            <button onClick={decrement} style={{color : "red"}}>-</button>
             {counter.count}
-            <button onClick={increment}>+</button>
+            <button onClick={increment} style={{color: "green"}}>+</button>
         </div>
     )
 }

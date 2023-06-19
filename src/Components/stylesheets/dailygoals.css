@@ -1,13 +1,15 @@
 .dailygoals{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: fit-content;
     align-items: center;
     font-size: 1.5rem;
     margin: 2rem;
     padding: 2rem;
-    border: solid 2px;
+    border: solid 2px var(--clr-primary);
     border-radius: 20px;;
+    box-shadow: 0px 0px 20px 2px var(--clr-primary);
+    gap : 0.5rem;
     gap : 2rem;
 }
 
@@ -21,5 +23,12 @@
     justify-content: space-between;
     margin : 1rem;
     gap : 5rem;
+}
+
+.submit-btn{
+    background-color: var(--clr-primary);
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem;
 }
 

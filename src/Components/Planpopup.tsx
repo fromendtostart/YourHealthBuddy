@@ -34,8 +34,8 @@ export default function Planpopup(props : Popup){
                 "name" : planName,
                 "plan" : {
                     "dates" : {
-                        "start" : Date.now(),
-                        "current" : Date.now()
+                        "start" : new Date(),
+                        "current" : new Date()
                     },
                     "data" : {
                         "today" : numberedWorkoutList,

@@ -83,8 +83,8 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
                 "name": workoutProps.planName,
                 "plan": {
                     "dates" : {
-                        "start" : Date.now(),
-                        "current" : Date.now()
+                        "start" : new Date(),
+                        "current" : new Date()
                     },
                     "data" : {
                         "today" : updatedProps,
@@ -117,7 +117,7 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
                     </div>
                 ))}
             </div>
-            <button className="submitbutton" onClick={handleSubmit}>Submit</button>
+            <button className="submit-btn" onClick={handleSubmit}>Submit</button>
         </div>
         </>
     )
