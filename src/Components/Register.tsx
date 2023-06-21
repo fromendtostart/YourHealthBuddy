@@ -63,7 +63,8 @@ import { useState, useEffect } from "react";
 
     return(
         <div className="register">
-            <h2>Register</h2>
+            <span className="yourhealthbuddy">Your Health Buddy</span>
+            <h1>Register</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input 
@@ -98,7 +99,7 @@ import { useState, useEffect } from "react";
                     onChange={(e) => setPwdMatch(e.target.value)}
                     />
                     {validMatch ? "":"Passwords don't match!"}
-                <button disabled={validMatch ? false:true} type = "submit" onClick={handleSubmit}>Submit</button>
+                <button className="submit-btn" disabled={validMatch ? false:true} type = "submit" onClick={handleSubmit}>Submit</button>
             </form>
         </div>
     )

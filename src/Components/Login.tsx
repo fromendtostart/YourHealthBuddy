@@ -1,6 +1,7 @@
 import "./stylesheets/register.css";
 import axios from "axios";
-import { useState, useContext, useEffect } from "react";
+import Navbar from "./Navbar";
+import { useState, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -65,6 +66,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
     return(
         <div className="register">
+            <span className="yourhealthbuddy">Your Health Buddy</span>
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
@@ -83,7 +85,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
                     required
                     onChange={(e) => setPwd(e.target.value)}
                     />
-                <button disabled={email!='' && pwd!='' ? false:true} type = "submit" onClick={handleSubmit}>Submit</button>
+                <button className="submit-btn" disabled={email!='' && pwd!='' ? false:true} type = "submit" onClick={handleSubmit}>Submit</button>
             </form>
             <span><Link to = "/register">Sign up instead</Link></span>
         </div>

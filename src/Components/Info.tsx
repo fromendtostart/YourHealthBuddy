@@ -74,7 +74,7 @@ export default function Info(){
                     console.log(response);
                     //can use useref instead of usestate as no re rendering shenanigans
             }catch(err){
-                alert("Some problem!")
+                alert("Some error!")
                 console.log(err);
             }
             

@@ -11,3 +11,7 @@
     border: none;
     font-size: 2rem;
 }
+
+.counter button:hover{
+    scale:1.2;
+}

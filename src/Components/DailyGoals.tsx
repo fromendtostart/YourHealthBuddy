@@ -58,24 +58,6 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
 
     const updateURL = "/update";
 
-    
-
-    // {
-    //     "plan" : {
-    //         "name": "Botman",
-    //         "plan": {
-    //             "dates": {
-    //                 "start": "12",
-    //                 "current": "12"
-    //             },
-    //             "data": {
-    //                 "today": [{"workout": "pushups", "number":30}, {"workout": "pullups", "number":40}],
-    //                 "sum" : [{"workout": "pushups", "number":30}, {"workout": "pullups", "number":40}]
-    //             }
-    //         }
-    //     }
-    // }
-
 
     const handleSubmit = async ()=>{
         const submitData = {
@@ -94,7 +76,7 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
             }
         }
         try{
-            const response = await axiosreq.put(updateURL,
+            await axiosreq.put(updateURL,
                     submitData,
                     {
                         headers: {"Content-Type" : "application/json", "Authorization" : `Bearer ${auth.accessToken}`},

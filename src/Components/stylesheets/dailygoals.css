@@ -7,7 +7,7 @@
     margin: 2rem;
     padding: 2rem;
     border: solid 2px var(--clr-primary);
-    border-radius: 20px;;
+    border-radius: 20px;
     box-shadow: 0px 0px 20px 2px var(--clr-primary);
     gap : 0.5rem;
     gap : 2rem;
@@ -30,5 +30,9 @@
     border-radius: 5px;
     border: none;
     padding: 0.5rem;
+}
+
+.submit-btn:hover{
+    scale:1.05;
 }
 

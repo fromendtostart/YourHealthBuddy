@@ -51,7 +51,7 @@ export default function Planpopup(props : Popup){
 
         const createplanURL = "/addPlan";
         try{
-            const response = await axiosreq.post(createplanURL,
+            await axiosreq.post(createplanURL,
                     planData,
                     {
                         headers: {"Content-Type" : "application/json", "Authorization" : `Bearer ${auth.accessToken}`}
@@ -72,7 +72,7 @@ export default function Planpopup(props : Popup){
         <div className="popup">
             <div className="popup-content">
                 <button className="close-btn" onClick={() => props.setTrigger(false)}>x</button>
-                <form>
+                <form className="popup-form">
                     <label htmlFor="name">Plan Name</label>
                     <input 
                         type="text"
@@ -82,14 +82,16 @@ export default function Planpopup(props : Popup){
                         onChange={(e)=>setPlanName(e.target.value)}
                     />
                     <label htmlFor="workouts">Workouts</label>
+                    <span>Enter a comma seperated list</span>
                     <input 
                         type="text"
                         id="workouts"
                         required
+                        placeholder="Ex - Squats, Curls"
                         value = {workouts}
                         onChange={(e)=>setWorkouts(e.target.value)}
                     />
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </form>
             </div>
         </div>
