@@ -49,7 +49,7 @@ export default function Planpopup(props : Popup){
             baseURL : "http://localhost:5000/data"
         })
 
-        const createplanURL = "/addPlan";
+        const createplanURL = "/add";
         try{
             await axiosreq.post(createplanURL,
                     planData,
