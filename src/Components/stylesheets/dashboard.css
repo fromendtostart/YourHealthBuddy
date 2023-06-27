@@ -6,3 +6,11 @@ body {
     margin:0;
     box-sizing: border-box; 
 }
+
+.info-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 2rem;
+}

@@ -1,0 +1,25 @@
+.insights{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 2rem;
+    padding: 2rem;
+    gap : 2rem;
+}
+
+.insight-items{
+    margin : 1rem;
+    gap : 2rem;
+    font-size: 1rem;
+}
+
+.insight-heading{
+    font-size: 2rem;
+}
+
+.h-seperator{
+    width: 25%;
+    margin-left: 0;
+    margin-right: 0;
+}
