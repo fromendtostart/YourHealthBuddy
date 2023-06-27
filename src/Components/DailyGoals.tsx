@@ -20,7 +20,6 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
     const {auth} = useContext<any>(AuthContext);
 
     //made this as state so value can change after counter is clicked
-    //const clonedArray = structuredClone(workoutProps.workouts)
     // eslint-disable-next-line prefer-const
     let [updatedProps, setUpdatedProps] = useState<Array<workoutObj>>(workoutProps.workouts)
 
@@ -28,6 +27,9 @@ export default function DailyGoals(workoutProps : WorkoutProps) {
         setUpdatedProps(workoutProps.workouts)
         //no infinite re rendering as array which is prop is immutable?!
       }, [workoutProps.workouts])
+
+
+    
     //function to be passed to child, there are many children  "counters" so have to pass identifiers to them
     //so that I know whose value is changed. 
     //for future : can "this" keyword help in shotening the code? no need to check name identified this would know

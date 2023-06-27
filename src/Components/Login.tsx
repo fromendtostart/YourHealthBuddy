@@ -1,6 +1,5 @@
 import "./stylesheets/register.css";
 import axios from "axios";
-import Navbar from "./Navbar";
 import { useState, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
