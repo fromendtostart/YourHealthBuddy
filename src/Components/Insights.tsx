@@ -31,6 +31,7 @@ export default function Insights(){
             setFetched(1);
             const responseInsights = response?.data;
             setInsights(responseInsights);
+            console.log(responseInsights);
         }
         catch(err){
             if(!(err as any)?.response){
@@ -48,9 +49,9 @@ export default function Insights(){
             <div className="insight">
             <div className="h-seperator"><hr/></div>
             <div className="insight-heading">Insights</div>
-            {fetched?insights.map((item)=>{
+            {fetched?insights.map((item, index)=>{
                 return(
-                    <div className="insight-items" key={item}>{item}</div>
+                    <div className="insight-items" key={item}>Your {index===0?"best":"worst"} workout is {item}.</div>
                 )
             }):""}
             {fetched===0?<div className="submit-btn" onClick={fetchInsights}>Fetch Insights</div>:""}

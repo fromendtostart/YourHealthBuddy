@@ -35,20 +35,30 @@ export default function Info(){
     const fetchURL = "/data/fetchplans"
 
     const cleanedResponse = () => {
-        const dateObj : Date = new Date();                            
-        for(let j=0; j<rawResponse[0]?.plan?.data?.today?.length; j++){  
+        const dateObj : Date = new Date();         
+        const currPlan = rawResponse?.length-1;
+        for(let j=0; j<rawResponse[currPlan]?.plan?.data?.today?.length; j++){  
             setResponseData((responseData)=> {
-                if(dateObj.toISOString().substring(0,10)===rawResponse[0].plan.dates.current?.substring(0, 10)){
-                    return ([...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
-                        number : rawResponse[0].plan.data.today[j].number}])
+                if(dateObj.toISOString().substring(0,10)===rawResponse[currPlan].plan.dates.current?.substring(0, 10)){
+                    return ([...responseData, {workout : rawResponse[currPlan].plan.data.today[j].workout, 
+                        number : rawResponse[currPlan].plan.data.today[j].number}])
                 }
                 else{
-                    return([...responseData, {workout : rawResponse[0].plan.data.today[j].workout, 
+                    return([...responseData, {workout : rawResponse[currPlan].plan.data.today[j].workout, 
                         number : 0}])
                 }
             });
-            setSumData((sumData)=> [...sumData, {workout : rawResponse[0].plan.data.sum[j].workout, 
-                                                    number : rawResponse[0].plan.data.sum[j].number}]);
+
+            setSumData((sumData)=>{
+                if(dateObj.toISOString().substring(0,10)===rawResponse[currPlan].plan.dates.current?.substring(0, 10)){
+                    return ([...sumData, {workout : rawResponse[currPlan].plan.data.sum[j].workout, 
+                        number : rawResponse[currPlan].plan.data.sum[j].number}])
+                }
+                else{
+                    return([...sumData, {workout : rawResponse[currPlan].plan.data.sum[j].workout, 
+                        number : rawResponse[currPlan].plan.data.sum[j].number+rawResponse[currPlan].plan.data.today[j].number}])
+                }
+            });
         }
     }
 
@@ -87,7 +97,7 @@ export default function Info(){
     if(auth?.accessToken?.length>0){
         return(
             <div className="info" id = "info">
-                <DailyGoals workouts={responseData} planName={rawResponse[0]?.name} sum = {sumData}/>
+                <DailyGoals workouts={responseData} planName={rawResponse[rawResponse?.length-1]?.name} sum = {sumData}/>
                 {!fetched?<button className="submit-btn" onClick={handleFetchGoals}>Fetch Goals</button>:""}
             </div>
         )
