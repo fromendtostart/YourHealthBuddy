@@ -46,7 +46,7 @@ export default function Insights(){
 
     if(auth?.accessToken?.length>0){
         return(
-            <div className="insight">
+            <div className="insights">
             <div className="h-seperator"><hr/></div>
             <div className="insight-heading">Insights</div>
             {fetched?insights.map((item, index)=>{
