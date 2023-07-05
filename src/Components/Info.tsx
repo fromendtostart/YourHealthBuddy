@@ -111,8 +111,8 @@ export default function Info(){
                     This is just a demo, in order to be able track your own plan please register/login.
                 </div>
                 <div className="demo-btns">
-                    <Link to="/register"><button className="submit-btn">Register</button></Link>
-                    <Link to="/login"><button className="submit-btn">Login</button></Link>
+                    <Link to="/YourHealthBuddy/register"><button className="submit-btn">Register</button></Link>
+                    <Link to="/YourHealthBuddy/login"><button className="submit-btn">Login</button></Link>
                 </div>
                 </div>
             </div>
