@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./stylesheets/insights.css";
 import AuthContext from "../context/AuthProvider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Insights(){
 
