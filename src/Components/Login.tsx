@@ -86,7 +86,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
                     />
                 <button className="submit-btn" disabled={email!='' && pwd!='' ? false:true} type = "submit" onClick={handleSubmit}>Submit</button>
             </form>
-            <span><Link to = "/register">Sign up instead</Link></span>
+            <span><Link to = "/YourHealthBuddy/register">Sign up instead</Link></span>
         </div>
     )
  }
