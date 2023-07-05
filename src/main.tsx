@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>
     <AuthProvider>
       <Routes>
-        <Route path = "/*" element={<App />} />
+        <Route path = "/YourHealthBuddy/*" element={<App />} />
       </Routes>
     </AuthProvider>
     </BrowserRouter>
