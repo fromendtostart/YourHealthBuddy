@@ -9,11 +9,12 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin: 4rem 1rem 2rem 1rem;
-    font-size: 1.5rem;
+    margin: 2rem 4rem 0rem 4rem;
+    font-size: 1rem;
 }
 
 .demo-btns{
+    margin:1rem;
     display: flex;
     align-items: center;
     justify-content: center;

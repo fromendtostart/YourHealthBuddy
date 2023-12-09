@@ -108,7 +108,10 @@ export default function Info(){
             {responseData && <DailyGoals workouts={demoWorkouts} planName={rawResponse[0]?.name} sum = {sumData}/>}
             <div className="demo-notice">
                 <div className="demo">
-                    This is just a demo, in order to be able track your own plan please register/login.
+                    This is just a demo, in order to be able track your own plan please register/login(currently disabled due to backend being unhosted, check out Github).
+                </div>
+                <div className="demo-btns">
+                    <div className="repo-btn"><a href = "https://github.com/fromendtostart/YourHealthBuddy-Server">Github</a></div> 
                 </div>
                 <div className="demo-btns">
                     <Link to="/YourHealthBuddy/register"><button className="submit-btn">Register</button></Link>

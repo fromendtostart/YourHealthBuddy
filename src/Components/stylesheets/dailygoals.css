@@ -24,7 +24,7 @@
     gap : 5rem;
 }
 
-.submit-btn{
+.submit-btn , .repo-btn{
     background-color: var(--clr-primary);
     border-radius: 5px;
     border: none;
